@@ -1,14 +1,10 @@
-import os
-import datetime
 import requests
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
-from dotenv import load_dotenv
+from settings import BOT_TOKEN
 
-load_dotenv()
-WEATHER_API_KEY = os.getenv('WEATHER_API_KEY')
-bot = Bot(token=os.getenv('BOT_TOKEN'))
+bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)
 
 

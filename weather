@@ -1,14 +1,12 @@
 #!/usr/bin/env python3.10
-from gps_coordinates import get_gps_coordinates
 from weather_api import get_weather
 from weather_formatter import format_weather
 
 
-def main():
-    coordinates = get_gps_coordinates()
-    weather = get_weather(coordinates)
+def main(city):
+    weather = get_weather(city)
     print(format_weather(weather))
 
 
 if __name__ == "__main__":
-    main()
+    main("Moscow")
