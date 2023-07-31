@@ -1,11 +1,13 @@
+from typing import NamedTuple
 from geopy.geocoders import Nominatim
 
 
-def get_coordinates(address):
-    geolocator = Nominatim(user_agent="myapplication")
+class Coordinates(NamedTuple):
+    latitude: float
+    longitude: float
+
+
+def get_gps_coordinates(address) -> Coordinates:
+    geolocator = Nominatim(user_agent="gps_coordinates_getter")
     location = geolocator.geocode(address)
-    return location.latitude, location.longitude
-
-
-latitude, longitude = get_coordinates({'city': 'Moscow'})
-print(latitude, longitude)
+    return Coordinates(latitude=location.latitude, longitude=location.longitude)
