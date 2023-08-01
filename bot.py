@@ -2,7 +2,7 @@ import requests
 from aiogram import Bot, types
 from aiogram.dispatcher import Dispatcher
 from aiogram.utils import executor
-from settings import BOT_TOKEN
+from settings import BOT_TOKEN, OPEN_WEATHER_API_KEY
 
 bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher(bot)
@@ -17,7 +17,7 @@ async def start_command(message: types.Message):
 async def get_weather(message: types.Message):
     try:
         response = requests.get(
-            f"http://api.openweathermap.org/data/2.5/weather?q=москва&lang=ru&units=metric&appid={WEATHER_API_KEY}")
+            f"http://api.openweathermap.org/data/2.5/weather?q=москва&lang=ru&units=metric&appid={OPEN_WEATHER_API_KEY}")
         data = response.json()
         print(data)
     except:
