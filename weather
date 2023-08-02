@@ -1,12 +1,13 @@
-#!/usr/bin/env python3.10
-from weather_api import get_weather
-from weather_formatter import format_weather
-
-
-def main(city):
-    weather = get_weather(city)
-    print(format_weather(weather))
-
-
-if __name__ == "__main__":
-    main("Moscow")
+#!/bin/bash
+#
+# #This is a script that runs weather program
+# Usage: ./hello <city_name (optional)>
+# Default city - Moscow
+clear
+source venv/bin/activate
+if [ -z "$1" ]; then
+  python3 weather_printer.py
+else
+  python3 weather_printer.py "$1"
+fi
+exit 0
