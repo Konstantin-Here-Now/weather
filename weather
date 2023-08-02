@@ -3,7 +3,6 @@
 # #This is a script that runs weather program
 # Usage: ./hello <city_name (optional)>
 # Default city - Moscow
-clear
 source venv/bin/activate
 if [ -z "$1" ]; then
   python3 weather_printer.py
