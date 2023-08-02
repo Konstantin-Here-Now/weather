@@ -3,7 +3,14 @@
 # #This is a script that runs weather program
 # Usage: ./hello <city_name (optional)>
 # Default city - Moscow
-source venv/bin/activate
+
+OS="$(uname)"
+if [ "$OS" = 'WindowsNT' ]; then
+  source venv/Scripts/activate
+else
+  source venv/bin/activate
+fi
+
 if [ -z "$1" ]; then
   python3 weather_printer.py
 else

@@ -5,10 +5,9 @@ from typing import NamedTuple, Literal
 from enum import Enum
 
 import requests
-from requests import RequestException
 
 from settings import OPEN_WEATHER_URL_TEMPLATE
-from exceptions import APIServiceError
+from exceptions import APIServiceError, StatusCodeError
 
 Celsius = int
 
@@ -33,21 +32,30 @@ class Weather(NamedTuple):
 
 def get_weather(city: str) -> Weather:
     openweather_response = _get_openweather_response(city)
+    _check_response_status_code(openweather_response.status_code)
     weather = _parse_openweather_response(openweather_response)
     return weather
 
 
-def _get_openweather_response(city: str) -> str:
+def _get_openweather_response(city: str) -> requests.Response:
     url = OPEN_WEATHER_URL_TEMPLATE.format(city=city)
     try:
-        return requests.get(url).text
-    except RequestException:
+        return requests.get(url)
+    except requests.RequestException:
         raise APIServiceError
 
 
-def _parse_openweather_response(openweather_response: str) -> Weather:
+def _check_response_status_code(status_code: int) -> None:
+    if 400 < status_code < 600:
+        print("==============================================================")
+        print("Error occurred. Check city name.")
+        print("==============================================================")
+        raise StatusCodeError("Status code:", status_code)
+
+
+def _parse_openweather_response(openweather_response: requests.Response) -> Weather:
     try:
-        openweather_dict = json.loads(openweather_response)
+        openweather_dict = json.loads(openweather_response.text)
     except JSONDecodeError:
         raise APIServiceError
     return Weather(
