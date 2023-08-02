@@ -11,6 +11,7 @@ def format_weather(weather: Weather) -> str:
 
 if __name__ == "__main__":
     from datetime import datetime
+
     from weather_api import WeatherType
 
     print(format_weather(Weather(

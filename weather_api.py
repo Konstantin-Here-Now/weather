@@ -1,13 +1,13 @@
 import json
 from datetime import datetime
-from json import JSONDecodeError
-from typing import NamedTuple, Literal
 from enum import Enum
+from json import JSONDecodeError
+from typing import Literal, NamedTuple
 
 import requests
 
-from settings import OPEN_WEATHER_URL_TEMPLATE
 from exceptions import APIServiceError, StatusCodeError
+from settings import OPEN_WEATHER_URL_TEMPLATE
 
 Celsius = int
 
