@@ -1,6 +1,6 @@
 class APIServiceError(Exception):
-    """Program can't get weather"""
+    """Program failed to get weather"""
 
 
 class StatusCodeError(Exception):
-    """Response had error status code (4xx, 5xx)"""
+    """OpenWeather Response had error status code (4xx, 5xx), may be wrong city name"""

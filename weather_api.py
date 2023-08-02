@@ -47,10 +47,7 @@ def _get_openweather_response(city: str) -> requests.Response:
 
 def _check_response_status_code(status_code: int) -> None:
     if 400 < status_code < 600:
-        print("==============================================================")
-        print("Error occurred. Check city name.")
-        print("==============================================================")
-        raise StatusCodeError("Status code:", status_code)
+        raise StatusCodeError(status_code)
 
 
 def _parse_openweather_response(openweather_response: requests.Response) -> Weather:
