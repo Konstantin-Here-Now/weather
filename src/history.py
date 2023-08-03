@@ -1,8 +1,8 @@
 from datetime import datetime
 from pathlib import Path
 
-from weather_api import Weather
-from weather_formatter import format_weather
+from .weather_api import Weather
+from .weather_formatter import format_weather
 
 
 class WeatherStorage:

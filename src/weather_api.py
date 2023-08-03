@@ -6,8 +6,8 @@ from typing import Literal, NamedTuple
 
 import requests
 
-from exceptions import APIServiceError, StatusCodeError
-from settings import OPEN_WEATHER_URL_TEMPLATE
+from .exceptions import APIServiceError, StatusCodeError
+from .settings import OPEN_WEATHER_URL_TEMPLATE
 
 Celsius = int
 
@@ -46,7 +46,7 @@ def _get_openweather_response(city: str) -> requests.Response:
 
 
 def _check_response_status_code(status_code: int) -> None:
-    if 400 < status_code < 600:
+    if 400 <= status_code < 600:
         raise StatusCodeError(status_code)
 
 
@@ -83,7 +83,3 @@ def _parse_temperature(openweather_dict: dict) -> Celsius:
 
 def _parse_suntime(openweather_dict: dict, time: Literal["sunrise"] | Literal["sunset"]) -> datetime:
     return datetime.fromtimestamp(openweather_dict["sys"][time])
-
-
-if __name__ == "__main__":
-    print(get_weather('Moscow'))

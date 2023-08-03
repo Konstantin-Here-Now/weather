@@ -1,6 +1,6 @@
 import sys
 
-from settings import DEFAULT_CITY
+from .settings import DEFAULT_CITY
 
 
 def get_city_name() -> str:

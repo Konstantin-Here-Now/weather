@@ -1,11 +1,11 @@
 from pathlib import Path
 
-from exceptions import APIServiceError, StatusCodeError
-from history import PlainFileWeatherStorage, save_weather
-from settings import ENABLE_HISTORY
-from weather_api import get_weather
-from weather_args_controller import get_city_name
-from weather_formatter import format_weather
+from src.exceptions import APIServiceError, StatusCodeError
+from src.history import PlainFileWeatherStorage, save_weather
+from src.settings import ENABLE_HISTORY
+from src.weather_api import get_weather
+from src.weather_args_controller import get_city_name
+from src.weather_formatter import format_weather
 
 
 def main(city: str) -> None:
