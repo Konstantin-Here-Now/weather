@@ -13,8 +13,8 @@ else
 fi
 
 if [ -z "$1" ]; then
-  python3 src/weather_printer.py
+  python3 weather_printer.py
 else
-  python3 src/weather_printer.py "$*"
+  python3 weather_printer.py "$*"
 fi
 exit 0

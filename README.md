@@ -1,7 +1,7 @@
 # Weather
 
-This is a console application that allows you to get the weather (weather type, temperature),
-as well as the time of sunrise and sunset. The weather is taken using the Open Weather API.
+This is a console application that allows user to get the weather (weather type, temperature),
+as well as the time of sunrise and sunset. The weather is obtained using the Open Weather API.
 
 
 ## Contents
@@ -74,13 +74,40 @@ If city name consists of several words, there is no problem:
 - [Python](https://www.python.org/)
 - [requests](https://github.com/psf/requests/)
 - [python-dotenv](https://github.com/theskumar/python-dotenv)
+- [pytest](https://github.com/pytest-dev/pytest/)
 
 
 ## File structure
 
-Coming soon...
+
+```bash
+weather/
+├── pytest.ini
+├── README.md
+├── requirements.txt
+├── src
+│   ├── exceptions.py
+│   ├── history.py
+│   ├── __init__.py
+│   ├── settings.py
+│   ├── weather_api.py
+│   ├── weather_args_controller.py
+│   └── weather_formatter.py
+├── tests
+│   ├── test_print_weather.py
+│   ├── test_weather_api.py
+│   ├── test_weather_args_controller.py
+│   └── test_weather_formatter.py
+├── weather
+└── weather_printer.py
+```
 
 
 ## Testing
 
-Coming soon...
+Make sure you have installed `pytest` package (it is also stated in `requirements.txt`).
+
+To run all the tests use:
+```bash
+pytest -v
+```
