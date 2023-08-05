@@ -1,7 +1,6 @@
 from datetime import datetime
 
 import pytest
-
 import src.exceptions as custom_exceptions
 import src.weather_api as weather_api
 from src.weather_api import WeatherType
